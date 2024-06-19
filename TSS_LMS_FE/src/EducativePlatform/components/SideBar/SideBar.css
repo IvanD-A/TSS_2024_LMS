@@ -3,9 +3,9 @@
     height: 300vh;
     background-color: #ffff;
 }
-.col-2{
-    border-left: 2px solid black !important;
-}
 .text-light {
     color: #5C5959 !important;
+}
+.my-4{
+    margin-left: 10px !important;
 }

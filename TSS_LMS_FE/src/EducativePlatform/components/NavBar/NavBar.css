@@ -14,8 +14,8 @@
 }
 .logo-image{
   background-image: url("../../../../public/assets/images/logo-empresa.png");
-  height: 110px;
-  width: 120px;
+  height: 100px;
+  width: 110px;
   margin-top: 0;
   background-repeat: no-repeat;
 }

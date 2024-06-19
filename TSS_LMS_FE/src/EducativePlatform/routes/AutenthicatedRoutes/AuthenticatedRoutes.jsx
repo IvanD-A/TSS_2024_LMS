@@ -25,6 +25,7 @@ import { Aporte } from '../../pages/Aportes/Aporte';
 import {
   AportesRecientes,
 } from '../../pages/AportesRecientes/AportesRecientes';
+import "./AuthenticatedRoutes.css";
 import { ChatPage } from '../../pages/ChatPage/ChatPage';
 import { ContribuirPage } from '../../pages/Contribuir/ContribuirPage';
 import { CreateTaskPage } from '../../pages/CreateTaskPage/CreateTaskPage';
