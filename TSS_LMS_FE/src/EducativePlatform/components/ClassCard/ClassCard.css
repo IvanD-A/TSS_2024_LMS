@@ -1,8 +1,12 @@
 .class-card {
   height: 27%;
-  width: 30%;
+  width: 420px;
+  border: 2px solid black;
+  border-radius: 20px !important;
 }
-
+.card-body{
+  padding: 15px;
+}
 .card-image {
   height: 20vh;
   width: 100%;
