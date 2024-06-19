@@ -1,0 +1,13 @@
+.rounded{
+    border-radius: 15px !important;
+    margin-top: 30px;
+    
+}
+.form-control{
+    border-radius: 15px;
+    height: 50px;
+}
+.btn-dark{
+    margin-top: 70px;
+    background-color: #4D82BC;
+}

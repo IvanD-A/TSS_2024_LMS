@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks";
 import {get, post } from "../../helpers";
-
+import "./JoinClassForm.css";
 export const JoinClassForm = () => {
 
   const initForm = {id_clase:""};
@@ -34,15 +34,22 @@ export const JoinClassForm = () => {
     <h3>Unirse a una clase</h3>
     <form className="register-form border border-dark rounded w-75 p-3 mx-auto">
     <div className="form-group mb-4">
-      <label className="mb-1"> <b>Ingresa el codigo de la clase:</b> </label>
+      <label className="mb-1"> <b>Codigo de clase:</b> </label>
+      <br/>
+      <label >Pidele a tu profesor el código de la clase e introdúcelo aqui:</label>
       <input
         name="id_clase"
         type="text"
         className="form-control"
-        placeholder="codigo"
+        placeholder="Codigo de clase"
         onChange={onFormUpdate}
       />
     </div>
+    <label>
+    Para iniciar sesión con un código de clase <br />
+        * Usa una cuenta autorizada <br />
+        * Usa un código de clase con 4 o 5 letras o números, sin espacios ni símbolos
+    </label>
     <button type="submit" className="btn btn-dark mx-auto d-block" onClick={joinClass} >
       unirse
     </button>
