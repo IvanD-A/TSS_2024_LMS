@@ -38,7 +38,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form className="mx-auto border border-dark rounded h-75 w-50 p-3">
+    <form className="mx-auto rounded h-75 w-50 p-3">
       <div className="form-group">
         <label htmlFor="exampleFormControlInput1" style={labelStyle} >Nombre Completo</label>
         <input
