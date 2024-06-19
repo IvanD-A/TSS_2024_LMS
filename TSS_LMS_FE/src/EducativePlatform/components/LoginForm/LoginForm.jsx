@@ -26,12 +26,7 @@ export const LoginForm = () => {
 
   return (
 <div>
-
-      <div class="img_container">
-    <div class="poster_2">
-      <img src="./assets/images/sally22.png" />
-    </div>
-  </div> <div class="form_container">
+<div class="form_container">
     <form className={styles.form_container}>
       <div className="form-group">
         <label htmlFor="exampleInputEmail1">Email</label>
@@ -42,6 +37,7 @@ export const LoginForm = () => {
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="ingresa tu correo electronico"
+          style={{backgroundColor:"#D9D9D9"}}
           onChange={onFormUpdate}
         />
       </div>
@@ -53,11 +49,12 @@ export const LoginForm = () => {
           className="form-control mb-2"
           id="exampleInputPassword1"
           placeholder="ingresa tu contraseña"
+          style={{backgroundColor:"#D9D9D9"}}
           onChange={onFormUpdate}
         />
       </div>
       <button
-        className="btn btn-dark mb-3"
+        className="btn btn-dark mb-3" style={{backgroundColor:"#005187"}} 
         onClick={(e) => {
           e.preventDefault();
           
@@ -73,3 +70,4 @@ export const LoginForm = () => {
     </form></div></div>
   );
 };
+
