@@ -2,12 +2,20 @@
   height: 15vh;
   margin-bottom: 0;
   width: 102%;
+  background-color: #005187 !important;
 }
-
+.nav-bar h1{
+  color: #FFFFFF;
+}
+.flex-row{
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
 .logo-image{
-  background-image: url("../../../../public/assets/images/platform-logo.png");
-  height: 100px;
-  width: 100px;
+  background-image: url("../../../../public/assets/images/logo-empresa.png");
+  height: 110px;
+  width: 120px;
   margin-top: 0;
   background-repeat: no-repeat;
 }

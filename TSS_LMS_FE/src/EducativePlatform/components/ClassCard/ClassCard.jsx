@@ -32,7 +32,7 @@ export const ClassCard = ({ id, title,archivado,reload }) => {
     <div className="card class-card shadow-sm m-2 bg-image hover-overlay ripple shadow-1-strong rounded" data-mdb-ripple-color="light">
       <img
         className="card-img-top card-image "
-        src="./assets/images/class-background.png"
+        src="./assets/images/class-card.jpg"
         alt="Card image cap"
       />
       <div className="card-body">

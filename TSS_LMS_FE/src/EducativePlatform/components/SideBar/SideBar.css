@@ -1,5 +1,11 @@
 .side-bar{
     margin-top: 0;
     height: 300vh;
-    background-color:#191930;
+    background-color: #ffff;
+}
+.col-2{
+    border-left: 2px solid black !important;
+}
+.text-light {
+    color: #5C5959 !important;
 }

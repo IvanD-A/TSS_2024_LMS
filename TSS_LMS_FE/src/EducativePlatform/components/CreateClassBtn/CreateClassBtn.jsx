@@ -6,7 +6,7 @@ export const CreateClassBtn = () => {
       <Link to="crear-clase">
         <img
           className="class-image"
-          src="./assets/images/add-btn.png"
+          src="./assets/images/boton-agregar.png"
           alt="add-button"
         />
       </Link>
