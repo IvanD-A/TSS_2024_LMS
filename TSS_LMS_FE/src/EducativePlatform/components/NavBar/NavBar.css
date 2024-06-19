@@ -10,7 +10,7 @@
 .flex-row{
   display: flex;
   align-items: center;
-  color: #FFFFFF;
+ 
 }
 .logo-image{
   background-image: url("../../../../public/assets/images/logo-empresa.png");
