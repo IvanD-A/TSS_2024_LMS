@@ -1,21 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useFetch, useForm } from "../../../hooks";
-import { PracticeCard } from "../../components";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { get, post } from "../../helpers";
 import styles from "./Mensajes.module.css";
-import PerfilU from "../MisAportes/foto/PerfilUsuario.jpg";
-import { useEffect } from "react";
-import { useState } from "react";
-import { del, get, post } from "../../helpers";
+
 export const Mensajes = () => {
   const [aportes, setAportes] = useState([]);
-  const [mensajesRecibidos, setMensajesRecibidos] = useState([]);
+  const [mensaje, setMensaje] = useState("");
   const { id_destino } = useParams();
-  const navigate = useNavigate();
-  const formularioSubir = { contenido: "" };
-  const { form, onFormUpdate } = useForm(formularioSubir);
   const id_usuario = localStorage.getItem("id_usuario");
-  console.log(id_destino);
+
   const getMensajesEnviados = async () => {
     const data = await get(
       `http://localhost:3001/api/myMessages?id_emisor=${id_usuario}&id_receptor=${id_destino}`
@@ -25,30 +18,24 @@ export const Mensajes = () => {
     );
 
     const ar = data2.concat(data);
-    let sorted = ar.sort((p1, p2) =>
-      p1.id < p2.id ? -1 : p1.id > p2.id ? 1 : 0
-    );
+    let sorted = ar.sort((p1, p2) => (p1.id < p2.id ? -1 : p1.id > p2.id ? 1 : 0));
     setAportes(sorted);
   };
-  const getMensajesRecibidos = async () => {};
+
   useEffect(() => {
     getMensajesEnviados();
   }, []);
 
-  useEffect(() => {
-    getMensajesRecibidos();
-  }, []);
   const subirComentario = async (e) => {
     e.preventDefault();
 
-    console.log(id_usuario);
     await post(`http://localhost:3001/api/myMessages`, {
-      ...form,
+      contenido: mensaje,
       idUsuarioOrigen: id_usuario,
       idUsuarioDestino: id_destino,
     });
-    getMensajesRecibidos();
-    getMensajesEnviados();
+    setMensaje("");  // Limpiar el campo de entrada de mensajes
+    getMensajesEnviados();  // Actualizar los mensajes
   };
 
   return (
@@ -56,15 +43,14 @@ export const Mensajes = () => {
       {typeof aportes[0] != "undefined" && (
         <h3>{aportes[0].nombre_completo}</h3>
       )}
-      {console.log(aportes)}
       {aportes.map((usuario) =>
         id_usuario == usuario.id_emisor ? (
-          <p className={styles.mensajeEnviado}>{usuario.contenido}</p>
+          <p className={`${styles.mensajeEnviado} ${styles.mensaje}`} key={usuario.id}>{usuario.contenido}</p>
         ) : (
-          <p className={styles.mensajeRecibido}>{usuario.contenido}</p>
+          <p className={`${styles.mensajeRecibido} ${styles.mensaje}`} key={usuario.id}>{usuario.contenido}</p>
         )
       )}
-      <form>
+      <form onSubmit={subirComentario}>
         <label htmlFor="titulocap" className={styles.textform}>
           {" "}
         </label>
@@ -72,18 +58,17 @@ export const Mensajes = () => {
           type="text"
           id="respuesta"
           name="contenido"
-          placeholder="Deja un comentario"
-          onChange={onFormUpdate}
+          placeholder="Mensaje"
+          value={mensaje}
+          onChange={(e) => setMensaje(e.target.value)}
           className={styles.box}
         />
         <button
           id="botonNuevoCap"
-          type="button"
-          // className={styles.button}
+          type="submit"
           className="btn btn-primary"
-          onClick={subirComentario}
         >
-          Subir{" "}
+          Subir
         </button>
       </form>
     </div>
