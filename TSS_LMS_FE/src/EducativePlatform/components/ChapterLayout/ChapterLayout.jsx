@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+import './ChapterLayout.css';
 import { del } from '../../helpers';
 
 export const ChapterLayout = ({ capitulo,idCapitulo,onReloadChapters }) => {

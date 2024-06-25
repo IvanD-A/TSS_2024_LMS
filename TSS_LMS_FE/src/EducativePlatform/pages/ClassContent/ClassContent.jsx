@@ -23,34 +23,36 @@ const onReloadChapters=()=>{
       {isLoading?<>cargando datos del curso...</>:<>
       {user_rol==="3" && 
       <>
-            <button 
-            className="text-light py-2 px-3 mx-auto d-block my-3" 
+      <div class="cont-auxi">
+      <button 
+            className="text-light py-2 px-3 d-block " 
+            id='boton-negro'
             style={{"backgroundColor":"#1D2939","borderRadius":"20px" }}
             onClick={()=>{navigate("crear-capitulo")}}
             >Nuevo Cápitulo </button> 
             
-            <div className='mb-5 mx-auto w-25'>
+           
             <button 
-            className="btn btn-outline-secondary mx-5" 
+            className="btn btn-outline-secondary" 
             style={{"borderRadius":"20px" }}
             onClick={()=>{navigate("ver-estudiantes")}}
             >ver alumnos inscritos </button>
 <br />
 <br />
             <button 
-            className="btn btn-outline-secondary mx-5" 
+            className="btn btn-outline-secondary" 
             style={{"borderRadius":"20px" }}
             onClick={()=>{navigate("ver-notas")}}
             >ver registro de notas </button>
-            
-            </div>
+           
+      </div>
             </> 
             }
         <h3>{data.nombre_clase}</h3>
         {typeof(data.capitulos)==="undefined"? <>
             {user_rol==="3"?  
                     <>
-                        <p>La clase esta vacia, puedes crear contenido presionando el boton “Nuevo Capitulo”</p>
+                        <p>No subiste ningun cotenido a esta clase, puedes empesar haciendo click en el boton "Nuevo Capitulo"</p>
                         <div className="hand-image mx-auto"></div>
                     </> 
                    :
