@@ -7,9 +7,10 @@ import { PracticeCard } from "../../components";
 import { Link } from "react-router-dom";
 import { CodeEditor } from "../../../UI/components/CodeEditor/CodeEditor";
 import { post } from "../../helpers";
+import { CodeEditorPage } from "../CodeEditorPage/CodeEditorPage";
 export const SubirAporte = () => {
   const [titulocap, setTitulocap] = useState("");
-
+  const [output, setOutput] = useState("|");
   const [DescripEjem, setDescripEjem] = useState("");
   const [CodigoEjem, setCodigoEjem] = useState("");
   const formularioSubir = {
@@ -20,7 +21,7 @@ export const SubirAporte = () => {
     codigo: "",
   };
   const { form, onFormUpdate } = useForm(formularioSubir);
-  const [codigo, setCodigo] = useState();
+  const [codigo, setCodigo] = useState("");
   const onCodeChange = (newValue) => {
     console.log(newValue);
     setCodigo(newValue);
@@ -35,6 +36,14 @@ export const SubirAporte = () => {
       id_usuario: id_usuario,
     });
   };
+
+  const exampleCode = `
+public class HolaMundo {
+  public static void main(String[] args) {
+    System.out.println("Hola, Mundo");
+  }
+}`;
+
   return (
     <div className={styles.Titulo}>
       <p>Crear un nuevo aporte</p>
@@ -82,9 +91,15 @@ export const SubirAporte = () => {
           <br />
           <br />
           <label htmlFor="CodigoEjem" className={styles.textform}>
-            Codigo del ejemplo:{" "}
+            <>
+            Codigo del ejemplo:
+              <pre>
+                {exampleCode}
+              </pre>
+            </>
+
           </label>
-          <AceEditor
+          {/* <AceEditor
             mode={"Java"}
             value={codigo}
             fontSize={14}
@@ -94,6 +109,14 @@ export const SubirAporte = () => {
             }}
             editorProps={{ $blockScrolling: false }}
             onChange={onCodeChange}
+          /> */}
+          
+          <CodeEditor
+            language="java"
+            code={codigo}
+            className={form.className}
+            onCodeChange={onCodeChange}
+            onOutputChange={setOutput}
           />
         </form>
         <br />
