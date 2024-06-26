@@ -41,6 +41,10 @@ chapterRoutes.get("/chapters/:id/material", async (req, res) => {
 });
 
 chapterRoutes.get("/chapters/:id/forum", async (req, res) => {
+  const [chapters] = await dbConnection.query(
+    `SELECT * FROM capitulo WHERE id=?`,
+    [req.params.id]
+  );
   const [rows, fields] = await dbConnection.query(
     `
     SELECT  capitulo.titulo_capitulo as titulo_capitulo,
@@ -64,17 +68,21 @@ chapterRoutes.get("/chapters/:id/forum", async (req, res) => {
     };
   });
   const result = {
-    titulo_capitulo: rows[0].titulo_capitulo,
-    titulo_material: rows[0].titulo_material,
-    estado: rows[0].estado,
-    titulo_foro: rows[0].titulo_foro,
-    descripcion_foro: rows[0].descripcion_foro,
+    titulo_capitulo: chapters[0].titulo_capitulo,
+    titulo_material: chapters[0].titulo_material,
+    estado: chapters[0].estado,
+    titulo_foro: chapters[0].titulo_foro,
+    descripcion_foro: chapters[0].descripcion_foro,
     mensajes: messages,
   };
   res.send(result);
 });
 
 chapterRoutes.get("/chapters/:id/practice", async (req, res) => {
+  const [chapters] = await dbConnection.query(
+    `SELECT * FROM capitulo WHERE id=?`,
+    [req.params.id]
+  );
   const [rows, fields] = await dbConnection.query(
     `SELECT 	capitulo.id as id_capitulo ,
                                                             capitulo.titulo_capitulo as titulo_capitulo,
@@ -97,8 +105,8 @@ chapterRoutes.get("/chapters/:id/practice", async (req, res) => {
   });
 
   const result = {
-    id_capitulo: rows[0].id_capitulo,
-    titulo_capitulo: rows[0].titulo_capitulo,
+    id_capitulo: chapters[0].id_capitulo,
+    titulo_capitulo: chapters[0].titulo_capitulo,
     practicas: practices,
   };
 

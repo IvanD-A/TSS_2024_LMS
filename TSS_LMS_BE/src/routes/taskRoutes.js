@@ -97,7 +97,7 @@ taskRoutes.put("/tasks/responses",async(req,res)=>{
     const {id_usuario,id_tarea,nota}=req.body;
 
     const updateNoteQuery=`UPDATE respuesta_tarea SET nota = ? 
-                               WHERE id_usuario = 2 AND id_tarea = ?`;
+                               WHERE id_usuario = ? AND id_tarea = ?`;
 
     await dbConnection.query(updateNoteQuery,[nota,id_usuario,id_tarea]);
 

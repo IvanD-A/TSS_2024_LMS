@@ -8,10 +8,6 @@ export const getUserData = async (userId) => {
                             AND usuario.id=?`;
   const [rows] = await dbConnection.query(query, [userId]);
 
-  if (rows.length === 0) {
-    return null;
-  }
-//toDo
   const classes = rows.map((item) => {
     return {
       id_clase: item.id_clase,

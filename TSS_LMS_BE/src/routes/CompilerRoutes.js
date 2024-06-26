@@ -2,6 +2,7 @@ import {Router} from 'express';
 import fs from 'fs';
 import {exec} from 'child_process';
 import { v4 as uuidv4 } from 'uuid';
+import path from 'path';
 
 const CompilerRoutes= Router();
 //toDo refactorizar
@@ -15,8 +16,12 @@ CompilerRoutes.post('/compiler',async(req,res)=>{
     fs.mkdirSync(excecutionDirectory,{recursive:true});
 
     fs.writeFile(javaFileDir, code, (err) => {if (err) throw err;}); 
-
-    exec(`javac ${javaFileDir} && java -cp ${excecutionDirectory} ${className}`, (err, stdout) => {if (err) {return;}
+    const absPath = path.resolve(javaFileDir);
+    const directory = path.dirname(absPath);
+    exec(`javac ${absPath} && java -cp ${directory} ${className}`, (err, stdout) => {if (err) {
+        console.log(err.message)
+        return;
+    }
     res.send(stdout)
     });
 

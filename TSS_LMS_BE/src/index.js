@@ -8,7 +8,7 @@ import cors from 'cors'
 import practiceRoutes from './routes/PracticeRoutes.js';
 import authRoutes from './routes/auth.js';
 import contriRoutes from './routes/ContriRoutes.js';
-import forumRoutes from './routes/forumRoutes.js';
+import forumRoutes from './routes/ForumRoutes.js';
 import contributionMessageRoutes from './routes/ContributionMessageRoutes.js';
 import messageRoutes from './routes/messagesRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
