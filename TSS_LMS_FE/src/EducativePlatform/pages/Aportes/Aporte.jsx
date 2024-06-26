@@ -3,7 +3,7 @@ import { useFetch, useForm } from "../../../hooks";
 import { PracticeCard } from "../../components";
 import { Link } from "react-router-dom";
 import styles from "./Aporte.module.css";
-import PerfilU from "../MisAportes/foto/PerfilUsuario.jpg";
+import PerfilU from "../MisAportes/foto/PerfilUsuario.png";
 import { useEffect } from "react";
 import { useState } from "react";
 import { del, get, post } from "../../helpers";

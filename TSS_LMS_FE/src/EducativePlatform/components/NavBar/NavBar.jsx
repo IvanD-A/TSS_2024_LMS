@@ -12,8 +12,8 @@ export const NavBar = ({color,userName,logged}) => {
             <div className="logo-image"></div>
             <h1>SimuLearn</h1>
         </div>
-        <div>
-            {(fullName!=="" && fullName!==null)? <><div className="">{fullName}</div><LogoutBtn/></> :<></> }
+        <div className="pruebax2">
+            {(fullName!=="" && fullName!==null)? <><div className="pruebax">{fullName}</div><LogoutBtn/></> :<></> }
         </div>
 
     </nav>

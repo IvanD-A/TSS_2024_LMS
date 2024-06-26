@@ -2,7 +2,7 @@
     display: flex;
     background-color: #e2e2e2;
     border-radius: 20px;
-    border: solid rgb(66, 65, 65);
+    border: 2px solid rgb(66, 65, 65);
     margin-left: 10vh;
     margin-right: 10vh;
     margin-bottom: 5vh;
@@ -24,9 +24,12 @@
 .Titulo {
     text-align: left;
     color: black;
-    border: solid black;
+    border: 2px solid black;
     border-radius: 10px;
-
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0 30px 30px;
+    padding: 20px;
 }
 
 .Titulo h1 {
@@ -41,6 +44,7 @@
     margin-right: 1vh;
     margin-bottom: 1vh;
     margin-top: 1vh;
+    width: auto;
     /* justify-content: flex-start; */
 
 }
@@ -104,6 +108,7 @@
     justify-content: end;
 }
 .mensajeEnviado {
+    width: auto;
     background-color: #d1e7dd;
     padding: 10px;
     border-radius: 10px;
@@ -113,6 +118,7 @@
   }
   
   .mensajeRecibido {
+    width: auto;
     background-color: #5e8bd7;
     padding: 10px;
     border-radius: 10px;
@@ -120,56 +126,3 @@
     text-align: left;
     align-self: flex-start;
   }
-  
-  .Titulo {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .mensaje {
-    max-width: 70%; /* Limita el ancho máximo del mensaje */
-    padding: 10px;
-    border-radius: 10px;
-    margin: 5px 0;
-    word-wrap: break-word; /* Para manejar las palabras largas */
-  }
-  
-  .mensajeEnviado {
-    background-color: #d1e7dd;
-    margin-left: auto; /* Alinea los mensajes enviados a la derecha */
-    text-align: right; /* Alinea el texto a la derecha */
-  }
-  
-  .mensajeRecibido {
-    background-color: #e7f1ff;
-    margin-right: auto; /* Alinea los mensajes recibidos a la izquierda */
-    text-align: left; /* Alinea el texto a la izquierda */
-  }
-  
-  form {
-    display: flex;
-    margin-top: 20px;
-  }
-  
-  #respuesta {
-    flex: 1;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  
-  

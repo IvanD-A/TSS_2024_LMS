@@ -3,7 +3,7 @@ import { useFetch } from "../../../hooks";
 import { Loading } from "../../../UI";
 import { MaterialCard } from "../../components";
 import styles from "./MisAportes.module.css";
-import PerfilU from "../MisAportes/foto/PerfilUsuario.jpg";
+import PerfilU from "../MisAportes/foto/PerfilUsuario.png";
 import { useEffect } from "react";
 import { del, get } from "../../helpers";
 import { async } from "q";

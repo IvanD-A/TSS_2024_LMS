@@ -1,8 +1,8 @@
 .Class {
     display: flex;
-    background-color: #e2e2e2;
+    background-color: #fcffff;
     border-radius: 20px;
-    border: solid rgb(66, 65, 65);
+    border: 2px solid rgb(66, 65, 65);
     margin-left: 10vh;
     margin-right: 10vh;
     margin-bottom: 3vh;
@@ -22,9 +22,10 @@
 
 .Titulo {
     text-align: left;
-    color: black;
-    border: solid black;
+    color:  black;
+    border:2px solid black;
     border-radius: 10px;
+margin: 40px 40px 0 40px;
 
 }
 
@@ -62,7 +63,7 @@
     background-color: #e2e2e2;
     width: 20%;
     height: 40px;
-    color: #e2e2e2;
+    color: #000;
     border: 0px;
     border-color: #e2e2e2;
     margin-left: 1vh;

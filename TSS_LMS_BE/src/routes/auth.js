@@ -58,6 +58,7 @@ authRoutes.post("/login", async (req, res) => {
         res.send({
           data: userData,
           token: generateToken(userData)});
+          console.log(userData);
     }
   } catch (error) {
     console.log(error);
