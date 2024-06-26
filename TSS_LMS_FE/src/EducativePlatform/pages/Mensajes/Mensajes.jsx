@@ -45,9 +45,13 @@ export const Mensajes = () => {
       )}
       {aportes.map((usuario) =>
         id_usuario == usuario.id_emisor ? (
-          <p className={`${styles.mensajeEnviado} ${styles.mensaje}`} key={usuario.id}>{usuario.contenido}</p>
+
+                <p className={`${styles.mensajeEnviado} ${styles.mensaje}`} key={usuario.id}>{usuario.contenido}</p>
+                
         ) : (
-          <p className={`${styles.mensajeRecibido} ${styles.mensaje}`} key={usuario.id}>{usuario.contenido}</p>
+          
+                <p className={`${styles.mensajeRecibido} ${styles.mensaje}`} key={usuario.id}>{usuario.contenido}</p>
+         
         )
       )}
       <form onSubmit={subirComentario}>

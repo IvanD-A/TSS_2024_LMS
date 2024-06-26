@@ -3,9 +3,9 @@ import { useFetch } from "../../../hooks";
 import { PracticeCard } from "../../components";
 import { Link } from "react-router-dom";
 import styles from "./ContribuirPage.module.css";
-import PerfilU from "../MisAportes/foto/PerfilUsuario.jpg";
-import RevisarAporte from "../Contribuir/fotos/RevisarAporte.jpg";
-import SubirAporte from "../Contribuir/fotos/SubirAporte.jpg";
+import PerfilU from "../MisAportes/foto/PerfilUsuario.png";
+import RevisarAporte from "../Contribuir/fotos/RevisarAporte1.jpg";
+import SubirAporte from "../Contribuir/fotos/SubirAporte1.jpg";
 import { useEffect, useState } from "react";
 import { get } from "../../helpers";
 export const ContribuirPage = () => {

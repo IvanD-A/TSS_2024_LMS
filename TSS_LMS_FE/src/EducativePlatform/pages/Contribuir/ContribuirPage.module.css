@@ -1,8 +1,8 @@
 .Class {
     display: flex;
-    background-color: #e2e2e2;
+    background-color: #fcffff;
     border-radius: 20px;
-    border: solid rgb(0, 0, 0);
+    border:2px solid rgb(0, 0, 0);
     margin-left: 10vh;
     margin-right: 10vh;
     margin-bottom: 3vh;
@@ -21,11 +21,9 @@
 .Titulo{
     text-align: left;
     color: black;
-    border: solid black;
-    border-radius: 10px;
-    overflow-y: scroll;
-    height: 55vh;
-
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 20px 30px 0 30px;
 }
 .Titulo h1{
     margin-top:1vh;
