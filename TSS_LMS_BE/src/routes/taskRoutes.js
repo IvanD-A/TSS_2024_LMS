@@ -13,6 +13,38 @@ taskRoutes.get("/chapter/:id_capitulo/tasks",async(req,res)=>{
     res.send(rows);
 })
 
+//obtener las notas de una clase
+
+taskRoutes.get("/chapter/:id/tasks-notes",async(req,res)=>{
+    const {id}=req.params;
+
+    const getTasksQuery=`SELECT
+                         usuario.id,
+                         usuario.nombre_completo , 
+                         usuario.email,
+                         capitulo.titulo_capitulo AS titulo_capitulo,
+                         tarea.descripcion AS descripcion_tarea,
+                        respuesta_tarea.nota
+                        FROM
+                          usuario
+                        JOIN
+                          usuario_clase ON usuario.id = usuario_clase.id_usuario
+                        JOIN
+                          clase ON usuario_clase.id_clase = clase.id 
+                        JOIN
+                          capitulo ON clase.id = capitulo.id_clase
+                        JOIN
+                          tarea ON capitulo.id = tarea.id_capitulo
+                        JOIN
+                          respuesta_tarea ON tarea.id = respuesta_tarea.id_tarea AND usuario.id = respuesta_tarea.id_usuario
+                        WHERE
+                          clase.id =24;`;
+
+   const [rows]=await dbConnection.query(getTasksQuery);
+   console.log(rows)
+    res.send(rows);
+})
+
 // subir una tarea a un capitulo
 taskRoutes.post("/chapter/:id_capitulo/tasks",async(req,res)=>{
     const {id_capitulo}=req.params;

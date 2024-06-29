@@ -6,14 +6,14 @@ import { get } from "../../helpers";
 export const GradesPage = () => {
     const [students,setStudents]=useState([]);
     const {id}=useParams();
-    console.log(`http://localhost:3001/api/chapter/${id}/tasks-notes`)
+    console.log(`http://localhost:3001/api/chapter/${id}/tasks-notes`,id)
     const getStudents=async()=>{
         const data= await get(`http://localhost:3001/api/chapter/${id}/tasks-notes`);
-        
+        console.log(data);
         setStudents(data);
     }
 
-    useEffect(()=>{getStudents()},[])
+    useEffect(()=>{getStudents()},[id])
     
 
   return (
@@ -37,7 +37,7 @@ export const GradesPage = () => {
                 <td>{student.nombre_completo}</td>
                 <td>{student.email}</td>
                 <td>{student.titulo_capitulo}</td>
-                <td>{student.descripcion}</td>
+                <td>{student.descripcion_tarea}</td>
                 {student.nota===null? <td> sin calificar</td>: <td>{student.nota}</td>}
 
 
