@@ -10,7 +10,7 @@ export const SideBar = () => {
        Clases</NavLink> 
 
         <NavLink className="my-4 d-block mx-auto text-light text-decoration-none" to="contribuir">
-        <img src="./assets/images/codigo 1.png" alt="" />
+        <img src="./assets/images/codigo1.png" alt="" />
           Contribuir</NavLink>
 
         <NavLink className="my-4 d-block mx-auto text-light text-decoration-none" to="mensajes">
