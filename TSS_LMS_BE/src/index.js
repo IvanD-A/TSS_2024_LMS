@@ -23,7 +23,7 @@ app.use(cors());
 app.use(cors({
 origin: 'http://localhost:3000', // React app URL
 methods: ['GET', 'POST','PUT', 'DELETE', 'OPTIONS'], // Allowed methods
-allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'access-control-allow-origin'] // Allowed headers
 }));
 app.use(APIRoute,userRoutes);
 app.use(APIRoute,ChapterRoutes);
