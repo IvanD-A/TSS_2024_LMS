@@ -13,7 +13,7 @@ export const LoginForm = () => {
 
   const navigate = useNavigate();
   const {form,onFormUpdate} = useForm({ email: "", password: "" });
-  const {fetchData} = useLogin("https://tss2024lms-production.up.railway.app/api/login",form);
+  const {fetchData} = useLogin("http://localhost:3001/api/login",form);
 
   const login = () => {
      fetchData()

@@ -13,7 +13,7 @@ export const CreateClassForm = () => {
   e.preventDefault();
 
   const localUser=localStorage.getItem("id_usuario");
-  await post("https://tss2024lms-production.up.railway.app/api/class/create",{...form,id_usuario:localUser})
+  await post("http://localhost:3001/api/class/create",{...form,id_usuario:localUser})
   navigate("/clases")
   }
 

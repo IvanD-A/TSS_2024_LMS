@@ -11,10 +11,10 @@ export const Mensajes = () => {
 
   const getMensajesEnviados = async () => {
     const data = await get(
-      `https://tss2024lms-production.up.railway.app/api/myMessages?id_emisor=${id_usuario}&id_receptor=${id_destino}`
+      `http://localhost:3001/api/myMessages?id_emisor=${id_usuario}&id_receptor=${id_destino}`
     );
     const data2 = await get(
-      `https://tss2024lms-production.up.railway.app/api/myMessages?id_emisor=${id_destino}&id_receptor=${id_usuario}`
+      `http://localhost:3001/api/myMessages?id_emisor=${id_destino}&id_receptor=${id_usuario}`
     );
 
     const ar = data2.concat(data);
@@ -35,7 +35,7 @@ export const Mensajes = () => {
   const subirComentario = async (e) => {
     e.preventDefault();
 
-    await post(`https://tss2024lms-production.up.railway.app/api/myMessages`, {
+    await post(`http://localhost:3001/api/myMessages`, {
       contenido: mensaje,
       idUsuarioOrigen: id_usuario,
       idUsuarioDestino: id_destino,

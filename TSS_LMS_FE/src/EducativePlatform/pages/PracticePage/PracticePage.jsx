@@ -7,7 +7,7 @@ import { PracticeCard } from '../../components';
 
 export const PracticePage = ({ practiceId }) => {
     const {id_practica}=useParams();
-    const {content}=useFetch(`https://tss2024lms-production.up.railway.app/api/chapters/${id_practica}/practice`,"GET");
+    const {content}=useFetch(`http://localhost:3001/api/chapters/${id_practica}/practice`,"GET");
     const {isLoading}=content;
     const {id_capitulo,practicas}=content.data;
     console.log(content.data)

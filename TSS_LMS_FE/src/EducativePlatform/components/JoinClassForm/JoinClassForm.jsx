@@ -16,10 +16,10 @@ export const JoinClassForm = () => {
     e.preventDefault();
     const localUser = localStorage.getItem("id_usuario");
 
-    const data=await get(`https://tss2024lms-production.up.railway.app/api/class/${form.id_clase}`)
+    const data=await get(`http://localhost:3001/api/class/${form.id_clase}`)
     console.log(data)
     if(data.archivado===0){
-      await post("https://tss2024lms-production.up.railway.app/api/class/register", {...form, id_usuario: localUser })
+      await post("http://localhost:3001/api/class/register", {...form, id_usuario: localUser })
       navigate("/clases")
     }
     else{

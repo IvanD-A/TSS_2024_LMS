@@ -6,7 +6,7 @@ import { MaterialCard } from '../../components';
 
 export const MaterialPage = () => {
   const { id_capitulo } = useParams();
-  const url = `https://tss2024lms-production.up.railway.app/api/chapters/${id_capitulo}/material`;
+  const url = `http://localhost:3001/api/chapters/${id_capitulo}/material`;
   const { content } = useFetch(url, "GET");
   const { isLoading, hasError } = content;
   const { descripcion_material, titulo_material, material } = content.data;

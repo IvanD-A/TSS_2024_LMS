@@ -30,7 +30,7 @@ export const SubirAporte = () => {
   const subirContrib = () => {
     const id_usuario = localStorage.getItem("id_usuario");
     console.log(id_usuario);
-    post("https://tss2024lms-production.up.railway.app/api/contributions", {
+    post("http://localhost:3001/api/contributions", {
       ...form,
       codigo: codigo,
       id_usuario: id_usuario,
