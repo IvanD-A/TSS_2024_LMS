@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.set("port",process.env.PORT || 3001);
 // Alternatively, configure specific options
+app.options('*', cors());
 app.use(cors({
 origin: 'http://localhost:3000', // React app URL
 methods: ['GET', 'POST','PUT', 'DELETE', 'OPTIONS'], // Allowed methods
