@@ -1,20 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.e0ba5cd2.css",
-    "main.js": "/static/js/main.a4df857b.js",
-    "static/media/hand.PNG": "/static/media/hand.87bfc8622447315276b5.PNG",
-    "static/media/RevisarAporte.jpg": "/static/media/RevisarAporte.d6bcee744918e80e0a93.jpg",
-    "static/media/oferta1.webp": "/static/media/oferta1.e4413a521a5ccb3663e9.webp",
-    "static/media/contenido.png": "/static/media/contenido.54497d0e5a9142304c16.png",
-    "static/media/quienesSomos.webp": "/static/media/quienesSomos.4acd4d04f924910f967a.webp",
-    "static/media/plataformaEducativa.jpg": "/static/media/plataformaEducativa.b4523db49a203468d3b5.jpg",
-    "static/media/SubirAporte.jpg": "/static/media/SubirAporte.8ed94b2ea463879d3e51.jpg",
+    "main.css": "/static/css/main.90963345.css",
+    "main.js": "/static/js/main.9fa0d58d.js",
+    "static/media/Contenido.jpeg": "/static/media/Contenido.8558099b4d46c5f5bb6c.jpeg",
+    "static/media/RevisarAporte1.jpg": "/static/media/RevisarAporte1.d6bcee744918e80e0a93.jpg",
+    "static/media/SubirAporte1.jpg": "/static/media/SubirAporte1.8ed94b2ea463879d3e51.jpg",
+    "static/media/hand2.PNG": "/static/media/hand2.79df8159a106312e42d0.PNG",
     "index.html": "/index.html",
-    "main.e0ba5cd2.css.map": "/static/css/main.e0ba5cd2.css.map",
-    "main.a4df857b.js.map": "/static/js/main.a4df857b.js.map"
+    "main.90963345.css.map": "/static/css/main.90963345.css.map",
+    "main.9fa0d58d.js.map": "/static/js/main.9fa0d58d.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0ba5cd2.css",
-    "static/js/main.a4df857b.js"
+    "static/css/main.90963345.css",
+    "static/js/main.9fa0d58d.js"
   ]
 }
