@@ -6,7 +6,7 @@ import { Loading } from '../../../UI';
 
 export const ForoLayout = () => {
   const { id_capitulo } = useParams();
-  const url = `http://localhost:3001/api/chapters/1/forum${id_capitulo}/forum`;
+  const url = `http://tss2024lms-production.up.railway.app/api/chapters/1/forum${id_capitulo}/forum`;
   const { content } = useFetch(url, "GET");
   const { isLoading, hasError } = content;
   const { descripcion_foro, titulo_foro, mensajes:[id_mensaje, autor, mensaje] } = content.data;

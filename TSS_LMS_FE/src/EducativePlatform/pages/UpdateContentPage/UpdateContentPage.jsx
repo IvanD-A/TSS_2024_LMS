@@ -23,7 +23,7 @@ export const UpdateContentPage = () => {
     const {form,onFormUpdate,setForm}=useForm(formData);
 
    const getChapterContent=async()=>{
-        const data=await get(`http://localhost:3001/api/chapters/${id_capitulo}`);
+        const data=await get(`http://tss2024lms-production.up.railway.app/api/chapters/${id_capitulo}`);
         console.log(data[0])
         setForm(data[0]);
         
@@ -33,7 +33,7 @@ export const UpdateContentPage = () => {
     const updateChapterContent=async(e)=>{
         e.preventDefault();
         console.log(form)
-        await put(`http://localhost:3001/api/chapters/${id_capitulo}`,form);
+        await put(`http://tss2024lms-production.up.railway.app/api/chapters/${id_capitulo}`,form);
         await navigate(-1);
 
     }

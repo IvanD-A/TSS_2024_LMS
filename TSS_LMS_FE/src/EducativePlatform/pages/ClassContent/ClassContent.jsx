@@ -13,7 +13,7 @@ const user_rol=localStorage.getItem("id_rol");
 const {id}=useParams();
 const navigate=useNavigate();
 
-const { content,fetchData }=useFetch(`http://localhost:3001/api/class/${id}`,"GET");
+const { content,fetchData }=useFetch(`http://tss2024lms-production.up.railway.app/api/class/${id}`,"GET");
 const {data,isLoading,hasError}=content;
 const onReloadChapters=()=>{
   fetchData()

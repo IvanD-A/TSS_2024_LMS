@@ -18,7 +18,7 @@ export const Aporte = () => {
   console.log(id);
   const getAportes = async () => {
     const data = await get(
-      `http://localhost:3001/api/contributions/${id}`
+      `http://tss2024lms-production.up.railway.app/api/contributions/${id}`
     );
     setAportes(data);
     console.log(data);
@@ -31,7 +31,7 @@ export const Aporte = () => {
     e.preventDefault();
 
     console.log(id_usuario);
-    await post(`http://localhost:3001/api/contribution/${id}/message`, {
+    await post(`http://tss2024lms-production.up.railway.app/api/contribution/${id}/message`, {
       ...form,
       id_autor: id_usuario,
     });
@@ -40,7 +40,7 @@ export const Aporte = () => {
   const [comentarios, setComentarios] = useState([]);
   const obtenerComentarios = async () => {
     const data = await get(
-      `http://localhost:3001/api/contribution/${id}/message`
+      `http://tss2024lms-production.up.railway.app/api/contribution/${id}/message`
     );
     console.log(data);
     setComentarios(data);
@@ -52,7 +52,7 @@ export const Aporte = () => {
 
   const eliminarComentario = async (id_comentario) => {
     await del(
-      `http://localhost:3001/api/contribution/${id}/message/${id_comentario}`
+      `http://tss2024lms-production.up.railway.app/api/contribution/${id}/message/${id_comentario}`
     );
     obtenerComentarios();
   };

@@ -11,7 +11,7 @@ export const TaskComponent =({task})=>{
     useEffect(()=>{console.log(task)},[])
     const onPublicNote=async(e,userId,note)=>{
         e.preventDefault();
-        await put(`http://localhost:3001/api/tasks/responses`,{id_usuario: userId,id_tarea:id_tarea ,nota:note});
+        await put(`http://tss2024lms-production.up.railway.app/api/tasks/responses`,{id_usuario: userId,id_tarea:id_tarea ,nota:note});
         await navigate(-1);
     }
     return <>

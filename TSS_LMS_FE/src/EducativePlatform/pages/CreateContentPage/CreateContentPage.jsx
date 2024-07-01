@@ -16,7 +16,7 @@ export const CreateContentPage = () => {
     codigo_ejemplo:""
   }
 
-  const url=`localhost:3001/api/chapters`;
+  const url=`tss2024lms-production.up.railway.app/api/chapters`;
   
   const body={
     "titulo_capitulo":"capitulo 1 de nuevo" ,

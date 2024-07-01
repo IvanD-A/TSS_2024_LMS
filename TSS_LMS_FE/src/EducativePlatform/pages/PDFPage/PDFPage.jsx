@@ -10,7 +10,7 @@ import { get } from '../../helpers';
 export const PDFPage = () => {
 
     const{id_capitulo,id_file}=useParams()
-    const url=`http://localhost:3001/api/chapters/${id_capitulo}/material`
+    const url=`http://tss2024lms-production.up.railway.app/api/chapters/${id_capitulo}/material`
 
     const [fileData,setFileData]=useState({contenido:"",enlace_material:"",id_archivo:0,nombre_archivo:"",tipo:0})
 

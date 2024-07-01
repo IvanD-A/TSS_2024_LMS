@@ -18,7 +18,7 @@ export const ClassPage = () => {
   const [user_rol,setUserRol]=useState(localStorage.getItem("id_rol"));
 
 
-  const { content,fetchData}=useFetch(`http://localhost:3001/api/users/${user_id}/class`,"GET")
+  const { content,fetchData}=useFetch(`http://tss2024lms-production.up.railway.app/api/users/${user_id}/class`,"GET")
   const {data,isLoading}=content;
 const Navigate= useNavigate();
   useEffect(()=>{

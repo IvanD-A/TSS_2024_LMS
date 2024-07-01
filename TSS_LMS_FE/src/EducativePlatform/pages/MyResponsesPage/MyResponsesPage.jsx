@@ -9,7 +9,7 @@ export const MyResponsesPage = () => {
     const idUsuario=localStorage.getItem("id_usuario");
 
     const loadMyResponses=async()=>{
-        const res=await get(`http://localhost:3001/api/tasks/responses/user/${idUsuario}`)
+        const res=await get(`http://tss2024lms-production.up.railway.app/api/tasks/responses/user/${idUsuario}`)
         setMyResponses(res);}
 
     

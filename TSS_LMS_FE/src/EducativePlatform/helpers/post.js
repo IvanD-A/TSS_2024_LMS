@@ -7,6 +7,7 @@ export const post=async(url,body)=>{
         {
 
             headers: {
+              "access-control-allow-origin" : "*",
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },

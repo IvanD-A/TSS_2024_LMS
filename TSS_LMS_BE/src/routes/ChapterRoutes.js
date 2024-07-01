@@ -139,7 +139,6 @@ chapterRoutes.post("/chapters", async (req, res) => {
     res.status(500).send("something is wrong");
   }
 });
-// localhost:3001/api/class/create
 
 chapterRoutes.post("/chapters", async (req, res) => {
   try {
