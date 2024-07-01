@@ -15,6 +15,12 @@ export const GradesPage = () => {
 
     const calculateAverages = (data) => {
         const userGrades = {};
+        const differentTasks = [];
+        data.forEach((task) => {
+            if (!differentTasks.includes(task.tarea_id)) {
+                differentTasks.push(task.tarea_id);
+            }
+        });
 
         data.forEach(student => {
             const { id, nota } = student;
@@ -24,14 +30,13 @@ export const GradesPage = () => {
             }
 
             userGrades[id].sum += nota;
-            userGrades[id].count += 1;
         });
 
         const averages = Object.keys(userGrades).map(userId => ({
             id: userId,
             nombre_completo: userGrades[userId].nombre_completo,
             email: userGrades[userId].email,
-            promedio: userGrades[userId].sum / userGrades[userId].count
+            promedio: userGrades[userId].sum / differentTasks.length,
         }));
 
         setAverages(averages);

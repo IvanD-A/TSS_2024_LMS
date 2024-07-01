@@ -20,17 +20,18 @@ taskRoutes.get("/chapter/:id/tasks-notes",async(req,res)=>{
 
     const getTasksQuery=`SELECT
                          usuario.id,
-                         usuario.nombre_completo , 
+                         usuario.nombre_completo ,
                          usuario.email,
                          capitulo.titulo_capitulo AS titulo_capitulo,
                          tarea.descripcion AS descripcion_tarea,
-                        respuesta_tarea.nota
+                         respuesta_tarea.nota,
+                         tarea.id as tarea_id
                         FROM
                           usuario
                         JOIN
                           usuario_clase ON usuario.id = usuario_clase.id_usuario
                         JOIN
-                          clase ON usuario_clase.id_clase = clase.id 
+                          clase ON usuario_clase.id_clase = clase.id
                         JOIN
                           capitulo ON clase.id = capitulo.id_clase
                         JOIN
@@ -38,9 +39,9 @@ taskRoutes.get("/chapter/:id/tasks-notes",async(req,res)=>{
                         JOIN
                           respuesta_tarea ON tarea.id = respuesta_tarea.id_tarea AND usuario.id = respuesta_tarea.id_usuario
                         WHERE
-                          clase.id =24;`;
+                          clase.id =?;`;
 
-   const [rows]=await dbConnection.query(getTasksQuery);
+   const [rows]=await dbConnection.query(getTasksQuery, [id]);
    console.log(rows)
     res.send(rows);
 })
@@ -50,7 +51,7 @@ taskRoutes.post("/chapter/:id_capitulo/tasks",async(req,res)=>{
     const {id_capitulo}=req.params;
     const {descripcion}=req.body;
 
-    const createTaskQuery=`INSERT INTO tarea (id_capitulo,descripcion) 
+    const createTaskQuery=`INSERT INTO tarea (id_capitulo,descripcion)
                             VALUES (?,?)`;
 
     await dbConnection.query(createTaskQuery,[id_capitulo,descripcion]);
@@ -61,7 +62,7 @@ taskRoutes.post("/chapter/:id_capitulo/tasks",async(req,res)=>{
 taskRoutes.delete("/chapter/:id_capitulo/tasks/:id_tarea",async(req,res)=>{
     const {id_tarea}=req.params;
 
-    const removeTaskQuery=`DELETE FROM tarea 
+    const removeTaskQuery=`DELETE FROM tarea
                            WHERE id = ?`;
 
     await dbConnection.query(removeTaskQuery,[id_tarea]);
@@ -72,8 +73,8 @@ taskRoutes.delete("/chapter/:id_capitulo/tasks/:id_tarea",async(req,res)=>{
 taskRoutes.put("/chapter/:id_capitulo/tasks/:id_tarea",async(req,res)=>{
     const {id_tarea}=req.params;
     const {descripcion}=req.body;
-    
-    const createTaskQuery=`UPDATE tarea 
+
+    const createTaskQuery=`UPDATE tarea
                            SET descripcion = ?
                            WHERE id = ?`;
     await dbConnection.query(createTaskQuery,[descripcion,id_tarea]);
@@ -88,7 +89,7 @@ taskRoutes.get("/task/:id_tarea/responses",async(req,res)=>{
                                     capitulo.*,
                                     usuario.nombre_completo
                             FROM tarea,respuesta_tarea,usuario,capitulo
-                            WHERE tarea.id=respuesta_tarea.id_tarea 
+                            WHERE tarea.id=respuesta_tarea.id_tarea
                             AND respuesta_tarea.id_usuario=usuario.id
                             AND capitulo.id=tarea.id_capitulo
                             AND tarea.id= ?`;
@@ -103,7 +104,7 @@ taskRoutes.get("/task/:id_tarea/responses",async(req,res)=>{
 taskRoutes.post("/tasks/responses",async(req,res)=>{
     const {id_usuario,id_tarea,mensaje,codigo}=req.body;
 
-    const createResponseQuery=`INSERT INTO respuesta_tarea (id_usuario,id_tarea,mensaje,codigo) 
+    const createResponseQuery=`INSERT INTO respuesta_tarea (id_usuario,id_tarea,mensaje,codigo)
                             VALUES (?,?,?,?)`;
 
     await dbConnection.query(createResponseQuery,[id_usuario,id_tarea,mensaje,codigo]);
@@ -115,8 +116,8 @@ taskRoutes.post("/tasks/responses",async(req,res)=>{
 taskRoutes.delete("/tasks/responses",async(req,res)=>{
     const {id_usuario,id_tarea}=req.body;
 
-    const deleteResponseQuery=`DELETE FROM respuesta_tarea 
-                               WHERE id_usuario = ? 
+    const deleteResponseQuery=`DELETE FROM respuesta_tarea
+                               WHERE id_usuario = ?
                                AND id_tarea = ? `;
 
     await dbConnection.query(deleteResponseQuery,[id_usuario,id_tarea]);
@@ -128,7 +129,7 @@ taskRoutes.delete("/tasks/responses",async(req,res)=>{
 taskRoutes.put("/tasks/responses",async(req,res)=>{
     const {id_usuario,id_tarea,nota}=req.body;
 
-    const updateNoteQuery=`UPDATE respuesta_tarea SET nota = ? 
+    const updateNoteQuery=`UPDATE respuesta_tarea SET nota = ?
                                WHERE id_usuario = ? AND id_tarea = ?`;
 
     await dbConnection.query(updateNoteQuery,[nota,id_usuario,id_tarea]);
@@ -146,7 +147,7 @@ taskRoutes.get("/tasks/responses/user/:id_usuario",async(req,res)=>{
                                     capitulo.*,
                                     usuario.nombre_completo
                             FROM tarea,respuesta_tarea,usuario,capitulo
-                            WHERE tarea.id=respuesta_tarea.id_tarea 
+                            WHERE tarea.id=respuesta_tarea.id_tarea
                             AND respuesta_tarea.id_usuario=usuario.id
                             AND capitulo.id=tarea.id_capitulo
                             AND usuario.id=?`;
