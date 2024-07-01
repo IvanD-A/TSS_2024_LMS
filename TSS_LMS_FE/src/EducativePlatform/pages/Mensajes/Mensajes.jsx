@@ -24,6 +24,12 @@ export const Mensajes = () => {
 
   useEffect(() => {
     getMensajesEnviados();
+    const intervalId = setInterval(async() => {
+      await getMensajesEnviados();
+    }, 5000);
+    return ()=>{
+      clearInterval(intervalId);
+    }
   }, []);
 
   const subirComentario = async (e) => {
