@@ -14,12 +14,12 @@ export const SideBar = () => {
           Contribuir</NavLink>
 
         <NavLink className="my-4 d-block mx-auto text-light text-decoration-none" to="mensajes">
-        <img src="./assets/images/comentario 1.png" alt="" />
+        <img src="./assets/images/comentario1.png" alt="" />
           Mensajes</NavLink>
 
 
           <NavLink className="my-4 d-block mx-auto text-light text-decoration-none" to="/clases/mis-entregas">
-          <img src="./assets/images/lista-de-verificacion 1.png" alt="" />
+          <img src="./assets/images/lista-de-verificacion1.png" alt="" />
          mis entregas</NavLink>   
 
     </aside>
