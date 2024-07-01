@@ -18,7 +18,6 @@ const APIRoute='/api';
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.set("port",process.env.PORT || 3001);
-app.use(cors());
 // Alternatively, configure specific options
 app.use(cors({
 origin: 'http://localhost:3000', // React app URL
