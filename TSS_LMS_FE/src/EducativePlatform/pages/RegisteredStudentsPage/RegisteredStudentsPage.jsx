@@ -8,7 +8,7 @@ export const RegisteredStudentsPage = () => {
     const {id}=useParams();
     console.log(id)
     const getStudents=async()=>{
-        const data= await get(`http://tss2024lms-production.up.railway.app/api/class/${id}/users`);
+        const data= await get(`https://tss2024lms-production.up.railway.app/api/class/${id}/users`);
         setStudents(data);
     }
 

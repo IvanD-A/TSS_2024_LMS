@@ -11,7 +11,7 @@ export const RunCodeBtn = ({ code, className, onOutputChange }) => {
     const bodyContent = JSON.stringify({ className: className, code: code, extention: 'java' });
 
 
-    const petition = await fetch('http://tss2024lms-production.up.railway.app/api/compiler', {
+    const petition = await fetch('https://tss2024lms-production.up.railway.app/api/compiler', {
       method: 'POST',
       headers: headerContent,
       body: bodyContent

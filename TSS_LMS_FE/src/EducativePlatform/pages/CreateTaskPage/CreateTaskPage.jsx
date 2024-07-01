@@ -10,7 +10,7 @@ export const CreateTaskPage = () => {
 
     const uploadTask=async(e)=>{
         e.preventDefault();
-        await post(`http://tss2024lms-production.up.railway.app/api/chapter/${id_capitulo}/tasks`,form);
+        await post(`https://tss2024lms-production.up.railway.app/api/chapter/${id_capitulo}/tasks`,form);
         navigate(-1)
     }
 

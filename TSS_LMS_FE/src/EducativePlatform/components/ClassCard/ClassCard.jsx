@@ -6,12 +6,12 @@ export const ClassCard = ({ id, title,archivado,reload }) => {
   const user_rol=localStorage.getItem("id_rol");
   const navigate=useNavigate();
   const archive=async()=>{
-    await updateArchiveStatus(`http://tss2024lms-production.up.railway.app/api/class/${id}/unarchive`);
+    await updateArchiveStatus(`https://tss2024lms-production.up.railway.app/api/class/${id}/unarchive`);
     reload();
   }
 
   const unarchive=async()=>{
-    await updateArchiveStatus(`http://tss2024lms-production.up.railway.app/api/class/${id}/archive`);
+    await updateArchiveStatus(`https://tss2024lms-production.up.railway.app/api/class/${id}/archive`);
     reload();
   }
 

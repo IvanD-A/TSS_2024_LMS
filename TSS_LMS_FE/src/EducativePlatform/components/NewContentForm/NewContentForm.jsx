@@ -27,7 +27,7 @@ export const NewContentForm = () => {
 
   const onCreateContent=(e)=>{
     e.preventDefault();
-    post("http://tss2024lms-production.up.railway.app/api/chapters",{...form,id_clase:id})
+    post("https://tss2024lms-production.up.railway.app/api/chapters",{...form,id_clase:id})
     navigate(-1)
   }
 

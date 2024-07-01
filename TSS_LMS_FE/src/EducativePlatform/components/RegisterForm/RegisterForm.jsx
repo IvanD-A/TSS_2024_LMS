@@ -8,7 +8,7 @@ export const RegisterForm = () => {
 
   const registerUser = async () => {
     try {
-      await post("http://tss2024lms-production.up.railway.app/api/register", form);
+      await post("https://tss2024lms-production.up.railway.app/api/register", form);
       alert('Usuario registrado correctamente');
     } catch (error) {
       alert('Error al registrar el usuario');

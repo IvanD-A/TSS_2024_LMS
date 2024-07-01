@@ -14,7 +14,7 @@ export const ContribuirPage = () => {
   const getAportes = async () => {
     const id_usuario = localStorage.getItem("id_usuario");
     console.log(id_usuario);
-    const data = await get("http://tss2024lms-production.up.railway.app/api/contributions");
+    const data = await get("https://tss2024lms-production.up.railway.app/api/contributions");
     setAportes(data);
     console.log(aportes);
   };

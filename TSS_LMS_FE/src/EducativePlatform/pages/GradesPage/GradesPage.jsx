@@ -8,7 +8,7 @@ export const GradesPage = () => {
     const { id } = useParams();
 
     const getStudents = async () => {
-        const data = await get(`http://tss2024lms-production.up.railway.app/api/chapter/${id}/tasks-notes`);
+        const data = await get(`https://tss2024lms-production.up.railway.app/api/chapter/${id}/tasks-notes`);
         setStudents(data);
         calculateAverages(data);
     };

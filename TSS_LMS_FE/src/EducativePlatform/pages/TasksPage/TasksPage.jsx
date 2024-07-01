@@ -5,7 +5,7 @@ import { useFetch } from '../../../hooks'
 export const TasksPage = () => {
     const {id_capitulo}=useParams();
     const idRol=localStorage.getItem("id_rol")
-    const {content}=useFetch(`http://tss2024lms-production.up.railway.app/api/chapter/${id_capitulo}/tasks`,"GET");
+    const {content}=useFetch(`https://tss2024lms-production.up.railway.app/api/chapter/${id_capitulo}/tasks`,"GET");
     const {data,isLoading,hasError}=content;
     console.log(data)
 

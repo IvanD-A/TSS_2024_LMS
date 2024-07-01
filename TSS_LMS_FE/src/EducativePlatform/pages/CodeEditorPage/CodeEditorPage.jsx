@@ -6,7 +6,7 @@ import { CodeEditor, ConsoleOutput } from "../../../UI";
 
 export const CodeEditorPage = () => {
   const { id_ejemplo } = useParams();
-  const { content } = useFetch(`http://tss2024lms-production.up.railway.app/api/practice/${id_ejemplo}`,"GET");
+  const { content } = useFetch(`https://tss2024lms-production.up.railway.app/api/practice/${id_ejemplo}`,"GET");
   const { data, isLoading } = content;
   const { id, titulo_practica, contenido,descripcion_practica} = data[0] || {};
   const defaultLanguage='java';

@@ -14,7 +14,7 @@ export const MisAportes = () => {
   const getAportes = async() =>{
     const id_usuario = localStorage.getItem("id_usuario")
     console.log(id_usuario)
-    const data = await get("http://tss2024lms-production.up.railway.app/api/contributions/?user="+id_usuario)
+    const data = await get("https://tss2024lms-production.up.railway.app/api/contributions/?user="+id_usuario)
     setAportes(data)
     console.log(aportes)
   }
@@ -24,7 +24,7 @@ export const MisAportes = () => {
   
  const eliminarAporte = async(id_aporte) => {
   
-  await del("http://tss2024lms-production.up.railway.app/api/contributions/"+ id_aporte)
+  await del("https://tss2024lms-production.up.railway.app/api/contributions/"+ id_aporte)
   getAportes()
  }
 

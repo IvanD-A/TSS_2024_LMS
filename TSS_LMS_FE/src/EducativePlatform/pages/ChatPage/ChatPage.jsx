@@ -13,7 +13,7 @@ export const ChatPage = () => {
   const id_usuario = localStorage.getItem("id_usuario");
   const getUseres = async () => {
     console.log(id_usuario);
-    const data = await get("http://tss2024lms-production.up.railway.app/api/users");
+    const data = await get("https://tss2024lms-production.up.railway.app/api/users");
     setUsers(data);
     console.log(usuarios);
   };
