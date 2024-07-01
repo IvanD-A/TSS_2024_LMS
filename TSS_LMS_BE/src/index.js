@@ -21,7 +21,7 @@ app.set("port",process.env.PORT || 3001);
 // Alternatively, configure specific options
 app.options('*', cors());
 app.use(cors({
-origin: 'http://localhost:3000', // React app URL
+origin: 'https://frontend-production-999e.up.railway.app', // React app URL
 methods: ['GET', 'POST','PUT', 'DELETE', 'OPTIONS'], // Allowed methods
 allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'access-control-allow-origin'] // Allowed headers
 }));
