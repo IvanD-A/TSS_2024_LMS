@@ -1,18 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../../../hooks';
 import { post } from '../../helpers';
 
 export const RegisterForm = () => {
   const { form, onFormUpdate, setForm } = useForm({ nombre_completo: "", id_rol: 2, email: "", password: "" });
+  const navigate = useNavigate();
+  const [validEmail, setValidEmail] = useState(true);
 
   const registerUser = async () => {
-    try {
-      await post("http://localhost:3001/api/register", form);
-      alert('Usuario registrado correctamente');
-    } catch (error) {
-      alert('Error al registrar el usuario');
-    }
+      const email = form.email;
+      if (email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/) === null) {
+          setValidEmail(false);
+          return;
+      }
+
+      await post("http://localhost:3001/api/register", form)
+      .then((response) => {
+        if (response.status === 400) {
+            alert('Correo ya se encuentra registrado');
+            return;
+        }
+        alert('Usuario registrado correctamente');
+        navigate('/inicio-sesion');
+      })
+      .catch((error) => {
+        alert('Error al registrar el usuario');
+      });
   }
 
   const labelStyle = { fontWeight: 'bold', color: '#000009' };
@@ -48,6 +62,7 @@ export const RegisterForm = () => {
       </div>
       <div className="form-group">
         <label htmlFor="exampleFormControlInput1" style={labelStyle}>Email</label>
+        <span style={{ color: 'red', marginLeft: '10px' }}>{!validEmail ? 'Correo inválido' : ''}</span>
         <input
           type="email"
           className="form-control"
@@ -75,7 +90,10 @@ export const RegisterForm = () => {
         type="submit"
         className="btn btn-dark mb-3"
         style={buttonStyle}
-        onClick={(e) => { e.preventDefault(); registerUser(); }}
+        onClick={async (e) => {
+            e.preventDefault();
+            await registerUser();
+        }}
       >
         Registrarse
       </button>

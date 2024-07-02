@@ -2,8 +2,7 @@
 export const post=async(url,body)=>{
   console.log(JSON.stringify(body));
     try {
-        const rawResponse = await         
-        fetch(url,
+        return fetch(url,
         {
 
             headers: {
@@ -14,12 +13,11 @@ export const post=async(url,body)=>{
             method: "POST",
             body: JSON.stringify(body)
         })
-        
-        const res = await rawResponse.json();
-       
-        return res;
+
+
       } catch (error) {
         console.error(error);
+          return error;
       }
 
 }
