@@ -20,7 +20,7 @@ export const ForoPage = () => {
   
 
   const { id} = useParams();
-  const { content, fetchData } = useFetch(`https://tss2024lms-production.up.railway.app/api/chapters/${id}/forum`, "GET");
+  const { content, fetchData } = useFetch(`http://localhost:3001/api/chapters/${id}/forum`, "GET");
   const { isLoading, hasError } = content;
   
   const { descripcion_foro, titulo_foro, mensajes, id_mensaje, autor, mensaje } = content.data;
@@ -33,7 +33,7 @@ export const ForoPage = () => {
     console.log(id_usuario);
     const nombre_completo = localStorage.getItem("nombre_completo")
     setForm(formularioSubir)
-    await post(`https://tss2024lms-production.up.railway.app/api/chapter/${id}/forum`, {...form, autor: nombre_completo}); 
+    await post(`http://localhost:3001/api/chapter/${id}/forum`, {...form, autor: nombre_completo}); 
     await fetchData();
 
   };
@@ -41,7 +41,7 @@ export const ForoPage = () => {
   
   const eliminarComentario=async(id_mensaje)=>{
     console.log(id_mensaje);
-    await del(`https://tss2024lms-production.up.railway.app/api/chapter/1/forum/message/${id_mensaje}`);
+    await del(`http://localhost:3001/api/chapter/1/forum/message/${id_mensaje}`);
     await fetchData();
   }
 

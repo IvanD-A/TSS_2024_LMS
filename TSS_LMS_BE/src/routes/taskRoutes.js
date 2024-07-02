@@ -102,12 +102,12 @@ taskRoutes.get("/task/:id_tarea/responses",async(req,res)=>{
 
 //responder la tarea de un capitulo
 taskRoutes.post("/tasks/responses",async(req,res)=>{
-    const {id_usuario,id_tarea,mensaje,codigo}=req.body;
+    const {id_usuario,id_tarea,mensaje,codigo, enlace}=req.body;
 
-    const createResponseQuery=`INSERT INTO respuesta_tarea (id_usuario,id_tarea,mensaje,codigo)
-                            VALUES (?,?,?,?)`;
+    const createResponseQuery=`INSERT INTO respuesta_tarea (id_usuario,id_tarea,mensaje,codigo,enlace)
+                            VALUES (?,?,?,?,?)`;
 
-    await dbConnection.query(createResponseQuery,[id_usuario,id_tarea,mensaje,codigo]);
+    await dbConnection.query(createResponseQuery,[id_usuario,id_tarea,mensaje,codigo,enlace]);
     res.status(201).send("created")
 })
 

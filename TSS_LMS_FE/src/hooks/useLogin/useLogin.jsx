@@ -6,7 +6,7 @@ export const useLogin = (url="",body={}) => {
         isLoading: true,
         hasError: false,
       });
-    
+
       const fetchData= async()=>{
         if(url===""){
             setContent({ data: {}, isLoading: false, hasError: false });
@@ -22,9 +22,8 @@ export const useLogin = (url="",body={}) => {
             body: JSON.stringify(body),
           });
         try {
-          console.log(rawResponse)
           const res = await rawResponse.json();
-          localStorage.setItem('active', true);  
+          localStorage.setItem('active', true);
 
         localStorage.setItem("id_usuario",res.data.id_usuario)
         localStorage.setItem("nombre_completo",res.data.nombre_completo)
@@ -33,9 +32,9 @@ export const useLogin = (url="",body={}) => {
         localStorage.setItem("token",res.token)
         setContent({ data: res, isLoading: false, hasError: false });
         } catch (error) {
-          localStorage.setItem('active', false);  
+          localStorage.setItem('active', false);
         }
-       
+
 
       }
 

@@ -13,7 +13,7 @@ export const ChapterLayout = ({ capitulo,idCapitulo,onReloadChapters }) => {
 
 const eliminarCapitulo=async(e)=>{
   e.preventDefault();
-  await del("https://tss2024lms-production.up.railway.app/api/chapters/"+idCapitulo)  
+  await del("http://localhost:3001/api/chapters/"+idCapitulo)  
   
  await onReloadChapters();  
 }

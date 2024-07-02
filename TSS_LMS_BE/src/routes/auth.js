@@ -18,10 +18,15 @@ authRoutes.post("/register", async (req, res) => {
     ) {
       res.status(400).send("complete all the fields and select a valid role!");
     }
+    const queryEmail = `SELECT * FROM usuario WHERE email=?`;
+    const [rowsEmail] = await dbConnection.query(queryEmail, [email]);
+    if (rowsEmail.length > 0) {
+      return res.status(400).send("the email is already in use");
+    }
 
     const encriptedPassword = await bcrypt.hash(password, 10);
 
-    const query = `INSERT INTO usuario (nombre_completo,id_rol,email,PASSWORD) 
+    const query = `INSERT INTO usuario (nombre_completo,id_rol,email,PASSWORD)
                              VALUES(?,?,?,?)`;
 
     const [rows] = await dbConnection.query(query, [

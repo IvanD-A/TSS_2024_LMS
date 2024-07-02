@@ -18,12 +18,11 @@ const APIRoute='/api';
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.set("port",process.env.PORT || 3001);
-// Alternatively, configure specific options
 app.options('*', cors());
 app.use(cors({
-origin: 'https://simulearn.up.railway.app', // React app URL
-methods: ['GET', 'POST','PUT', 'DELETE', 'OPTIONS'], // Allowed methods
-allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'access-control-allow-origin'] // Allowed headers
+origin: 'http://localhost:3000', 
+methods: ['GET', 'POST','PUT', 'DELETE', 'OPTIONS'], 
+allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'access-control-allow-origin']
 }));
 app.use(APIRoute,userRoutes);
 app.use(APIRoute,ChapterRoutes);

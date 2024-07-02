@@ -7,7 +7,7 @@ export const UpdateContentPage = () => {
 
    const navigate=useNavigate();
    const {id_capitulo}=useParams();
-   
+
 
    const [formData,setFormData]=useState({titulo_capitulo: "",
                                         titulo_material: "" ,
@@ -16,31 +16,31 @@ export const UpdateContentPage = () => {
                                         titulo_foro:"",
                                         descripcion_foro:"",
                                         estado_foro:"",
-                                        titulo_ejemplo:"",
-                                        descripcion_ejemplo:"",
-                                        codigo_ejemplo:""})
+                                        titulo_practica:"",
+                                        descripcion_practica:"",
+                                        contenido:""})
 
     const {form,onFormUpdate,setForm}=useForm(formData);
 
    const getChapterContent=async()=>{
-        const data=await get(`https://tss2024lms-production.up.railway.app/api/chapters/${id_capitulo}`);
-        console.log(data[0])
+        const data=await get(`http://localhost:3001/api/chapters/${id_capitulo}`);
+        console.log(data)
         setForm(data[0]);
-        
+
     }
 
 
     const updateChapterContent=async(e)=>{
         e.preventDefault();
         console.log(form)
-        await put(`https://tss2024lms-production.up.railway.app/api/chapters/${id_capitulo}`,form);
+        await put(`http://localhost:3001/api/chapters/${id_capitulo}`,form);
         await navigate(-1);
 
     }
 
     useEffect(()=>{getChapterContent()},[])
 
-    
+
 
 
   const onReturn=(e)=>{
@@ -65,9 +65,9 @@ export const UpdateContentPage = () => {
         </div>
         <div className="form-group">
           <label htmlFor="exampleFormControlInput1">Titulo del material</label>
-          <input 
-              type="text" 
-              className="form-control" 
+          <input
+              type="text"
+              className="form-control"
               placeholder="URL"
               name="titulo_material"
               value={form.titulo_material}
@@ -91,9 +91,9 @@ export const UpdateContentPage = () => {
           <label htmlFor="exampleFormControlInput1">
             Ingrese el enlace del material
           </label>
-          <input 
-              type="text" 
-              className="form-control" 
+          <input
+              type="text"
+              className="form-control"
               placeholder="URL"
               name="enlace_material"
               value={form.enlace_material}
@@ -129,12 +129,12 @@ export const UpdateContentPage = () => {
 
         <div className="form-group">
           <label htmlFor="exampleFormControlSelect1">Estado del foro</label>
-          <select className="form-control" 
-                  name="estado_foro" 
+          <select className="form-control"
+                  name="estado_foro"
                   onChange={onFormUpdate}
                   value={form.estado_foro}
                   >
-            <option disabled selected >Seleccione un estado</option>    
+            <option disabled selected >Seleccione un estado</option>
             <option value="0" >Inactivo</option>
             <option value="1" >Activo</option>
           </select>
@@ -146,8 +146,8 @@ export const UpdateContentPage = () => {
             type="text"
             className="form-control"
             placeholder="Ingrese el titulo del ejemplo"
-            name="titulo_ejemplo"
-            value={form.titulo_ejemplo}
+            name="titulo_practica"
+            value={form.titulo_practica}
             onChange={onFormUpdate}
           />
         </div>
@@ -159,8 +159,8 @@ export const UpdateContentPage = () => {
             className="form-control"
             rows="3"
             placeholder="Escriba una descripcion del ejemplo subido"
-            name="descripcion_ejemplo"
-            value={form.descripcion_ejemplo}
+            name="descripcion_practica"
+            value={form.descripcion_practica}
             onChange={onFormUpdate}
           ></textarea>
         </div>
@@ -169,11 +169,11 @@ export const UpdateContentPage = () => {
           <label htmlFor="exampleFormControlInput1">
             Ingrese el codigo del ejemplo
           </label>
-          <textarea 
-              className="form-control" 
+          <textarea
+              className="form-control"
               rows="3"
-              name="codigo_ejemplo"
-              value={form.codigo_ejemplo}
+              name="contenido"
+              value={form.contenido}
               onChange={onFormUpdate}></textarea>
         </div>
 
@@ -187,5 +187,5 @@ export const UpdateContentPage = () => {
         <br />
       </form>
   );
-  
+
 }

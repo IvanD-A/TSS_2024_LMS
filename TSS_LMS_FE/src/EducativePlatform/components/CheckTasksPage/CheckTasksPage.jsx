@@ -10,7 +10,7 @@ export const CheckTasksPage = () => {
     const [tasks,setTasks]=useState([]);
 
     const getTasks=async()=>{
-        const tasksUploaded=await get(`https://tss2024lms-production.up.railway.app/api/task/${id_tarea}/responses`);
+        const tasksUploaded=await get(`http://localhost:3001/api/task/${id_tarea}/responses`);
         setTasks(tasksUploaded)
     }
 

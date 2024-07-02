@@ -55,7 +55,7 @@ chapterRoutes.get("/chapters/:id/forum", async (req, res) => {
             mensaje.id as id_mensaje,
             mensaje.autor as autor,
             mensaje.contenido as mensaje
-    FROM capitulo,mensaje 
+    FROM capitulo,mensaje
     WHERE capitulo.id=? and capitulo.id=mensaje.id_capitulo`,
     [req.params.id]
   );
@@ -88,9 +88,9 @@ chapterRoutes.get("/chapters/:id/practice", async (req, res) => {
                                                             capitulo.titulo_capitulo as titulo_capitulo,
                                                             practica.id as id_practica,
                                                             practica.titulo_practica as titulo_practica,
-                                                            
+
                                                             practica.contenido as contenido
-                                                    FROM capitulo,practica 
+                                                    FROM capitulo,practica
                                                     WHERE capitulo.id=practica.id_capitulo
                                                     AND capitulo.id=?`,
     [req.params.id]
@@ -116,22 +116,22 @@ chapterRoutes.get("/chapters/:id/practice", async (req, res) => {
 chapterRoutes.post("/chapters", async (req, res) => {
   try {
     const {titulo_capitulo,titulo_material,descripcion_material,enlace_material,titulo_foro,descripcion_foro,
-      estado_foro,titulo_ejemplo,descripcion_ejemplo,codigo_ejemplo,id_clase} = req.body;
+      estado_foro,titulo_practica,descripcion_ejemplo,codigo_ejemplo,id_clase} = req.body;
 
     const createChapterQuery = `INSERT INTO capitulo
-                                     (titulo_capitulo, titulo_material, descripcion_material,titulo_foro,descripcion_foro,estado_foro,id_clase) 
+                                     (titulo_capitulo, titulo_material, descripcion_material,titulo_foro,descripcion_foro,estado_foro,id_clase)
                                      VALUES (?,?,?,?,?,?,?)`;
 
-    const insertMaterialQuery = `INSERT INTO archivo(enlace, id_capitulo, contenido, tipo, nombre_archivo) 
+    const insertMaterialQuery = `INSERT INTO archivo(enlace, id_capitulo, contenido, tipo, nombre_archivo)
                                      VALUES (?,?,?,?,?)`;
 
-    const insertInteractivePractice = `INSERT INTO practica(id_capitulo,contenido,titulo_practica,descripcion_practica) 
+    const insertInteractivePractice = `INSERT INTO practica(id_capitulo,contenido,titulo_practica,descripcion_practica)
                                      VALUES (?,?,?,?)`;
 
     const [rows] = await dbConnection.query(createChapterQuery, [titulo_capitulo,titulo_material,descripcion_material,titulo_foro,descripcion_foro,estado_foro,id_clase]);
     const { insertId } = rows;
     await dbConnection.query(insertMaterialQuery, [enlace_material,insertId,null,null,titulo_material]);
-    await dbConnection.query(insertInteractivePractice, [insertId,codigo_ejemplo,titulo_ejemplo,descripcion_ejemplo]);
+    await dbConnection.query(insertInteractivePractice, [insertId,codigo_ejemplo,titulo_practica,descripcion_ejemplo]);
     res.send("new chapter was created successfully");
 
   } catch (error) {
@@ -146,13 +146,13 @@ chapterRoutes.post("/chapters", async (req, res) => {
       estado_foro,titulo_ejemplo,descripcion_ejemplo,codigo_ejemplo,id_clase} = req.body;
 
     const createChapterQuery = `INSERT INTO capitulo
-                                     (titulo_capitulo, titulo_material, descripcion_material,titulo_foro,descripcion_foro,estado_foro,id_clase) 
+                                     (titulo_capitulo, titulo_material, descripcion_material,titulo_foro,descripcion_foro,estado_foro,id_clase)
                                      VALUES (?,?,?,?,?,?,?)`;
 
-    const insertMaterialQuery = `INSERT INTO archivo(enlace, id_capitulo, contenido, tipo, nombre_archivo) 
+    const insertMaterialQuery = `INSERT INTO archivo(enlace, id_capitulo, contenido, tipo, nombre_archivo)
                                      VALUES (?,?,?,?,?)`;
 
-    const insertInteractivePractice = `INSERT INTO practica(id_capitulo,contenido,titulo_practica,descripcion_practica) 
+    const insertInteractivePractice = `INSERT INTO practica(id_capitulo,contenido,titulo_practica,descripcion_practica)
                                      VALUES (?,?,?,?)`;
 
     const [rows] = await dbConnection.query(createChapterQuery, [titulo_capitulo,titulo_material,descripcion_material,titulo_foro,descripcion_foro,estado_foro,id_clase]);
@@ -169,6 +169,12 @@ chapterRoutes.post("/chapters", async (req, res) => {
 
 
 
+chapterRoutes.get("/chapters/:id", async (req,res)=>{
+    const {id}=req.params;
+    const query=`SELECT * FROM capitulo join practica p on p.id_capitulo = capitulo.id WHERE capitulo.id=?`;
+    const [rows]=await dbConnection.query(query,[id]);
+    res.send(rows)
+    })
 chapterRoutes.delete("/chapters/:id", async (req,res)=>{
   const {id}=req.params;
   const removeInteractivePracticeQuery = `DELETE FROM practica WHERE practica.id_capitulo = ?`;
@@ -190,29 +196,29 @@ chapterRoutes.put("/chapters/:id",async (req,res)=>{
   try {
     const {id}= req.params;
     const {titulo_capitulo,titulo_material,descripcion_material,enlace_material,titulo_foro,descripcion_foro,
-      estado_foro,titulo_ejemplo,descripcion_ejemplo,codigo_ejemplo} = req.body;
-      const updatePractice=`UPDATE practica 
-                                SET contenido = ?, 
+      estado_foro,titulo_practica,descripcion_practica,contenido} = req.body;
+      const updatePractice=`UPDATE practica
+                                SET contenido = ?,
                                     titulo_practica = ?,
-                                    descripcion_practica = ? 
+                                    descripcion_practica = ?
                                 WHERE id_capitulo = ?`;
 
-      const updateFileQuery=`UPDATE archivo 
-                            SET enlace = ?, 
+      const updateFileQuery=`UPDATE archivo
+                            SET enlace = ?,
                                 contenido = ?,
-                                nombre_archivo = ? 
+                                nombre_archivo = ?
                               WHERE id_capitulo = ?`;
 
-      const updateChapter=`UPDATE capitulo 
+      const updateChapter=`UPDATE capitulo
                           SET titulo_capitulo = ?,
-                              titulo_material = ?, 
+                              titulo_material = ?,
                               descripcion_material = ?,
                               titulo_foro = ?,
                               descripcion_foro = ?,
                               estado_foro=?
                           WHERE id = ? `;
 
-      await dbConnection.query(updatePractice, [codigo_ejemplo,titulo_ejemplo,descripcion_ejemplo,id]);
+      await dbConnection.query(updatePractice, [contenido,titulo_practica,descripcion_practica,id]);
       await dbConnection.query(updateFileQuery, [enlace_material,null,titulo_material,id]);
       await dbConnection.query(updateChapter, [titulo_capitulo,titulo_material,descripcion_material,titulo_foro,descripcion_foro,estado_foro,id]);
     res.status(201).send("updated successfully")
